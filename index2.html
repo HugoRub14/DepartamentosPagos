@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Departamentos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .departamento {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        .departamento h2 {
+            margin-top: 0;
+        }
+
+        .departamento p {
+            margin: 5px 0;
+        }
+
+        .pagado {
+            background-color: #5cb85c;
+            color: #fff;
+        }
+
+        .no-pagado {
+            background-color: #d9534f;
+            color: #fff;
+        }
+
+        .sin-inquilino {
+            background-color: #f0ad4e;
+            color: #fff;
+        }
+
+        .botones-group {
+            margin-top: 10px;
+        }
+
+        .botones-group button {
+            margin-right: 10px;
+            margin-bottom: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border: none;
+            color: #fff;
+            background-color: #000; /* Color de fondo negro */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="departamento pagado" id="departamento1">
+            <h2>301 - GRANDE SIN BALCÓN</h2>
+            <p>Juan Carlos Medina</p>
+            <p>01 octubre 2023 al 30 septiembre 2024</p>
+            <div class="botones-group">
+                <button onclick="actualizarEstado('departamento1', 'sin-inquilino')">Sin Inquilino</button>
+                <button onclick="actualizarEstado('departamento1', 'no-pagado')">No Pagado</button>
+                <button onclick="actualizarEstado('departamento1', 'pagado')">Pagado</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para actualizar el estado y guardar en el almacenamiento local
+        function actualizarEstado(idDepartamento, estado) {
+            var departamento = document.getElementById(idDepartamento);
+            departamento.classList.remove('sin-inquilino', 'no-pagado', 'pagado');
+            departamento.classList.add(estado);
+            // Guardar el estado en el almacenamiento local
+            localStorage.setItem(idDepartamento, estado);
+        }
+
+        // Restaurar los estados guardados al cargar la página
+        window.onload = function() {
+            var departamentos = document.querySelectorAll('.departamento');
+            departamentos.forEach(function(departamento) {
+                var idDepartamento = departamento.id;
+                var estadoGuardado = localStorage.getItem(idDepartamento);
+                if (estadoGuardado) {
+                    departamento.classList.add(estadoGuardado);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
