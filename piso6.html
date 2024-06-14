@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piso 6 - Administración de Departamentos</title>
+    <style>
+        body {
+            font-family: AriaL ;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .departamento {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            width: 550px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .departamento.pagado {
+            background-color: #28a937;
+        }
+        .departamento.no-pagado {
+            background-color: #c52c2c;
+        }
+        .departamento.sin-inquilino {
+            background-color: #b99e42;
+        }
+        .botones-group {
+            margin-top: 10px;
+        }
+        .botones-group button {
+            margin-right: 5px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .navigation {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .navigation a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .departamento h2 {
+            font-size: 1.5em;
+            margin: 0 0 10px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .departamento p {
+            margin: 5px 0;
+            font-size: 1em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .botones-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        .botones-group button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .botones-group button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+<body>
+    <h1>Piso 6</h1>
+    <div class="container">
+    <div class="departamento pagado" id="departamento25">
+        <h2>601 - GRANDE SIN BALCÓN</h2>
+        <p>Area: 49.12 (M²)</p>
+        <p>Pago Mensual: $22,000.00</p>
+        <p>Fecha de cobro mensual: Dia 8 De Cada Mes</p>
+        <p>Maribel Gallardo</p>
+        <p>Vencimiento de Contrato: 01 Noviembre 2023 al 31 Octubre 2024</p>
+        <div class="botones-group">
+            <button onclick="actualizarEstado('departamento25', 'sin-inquilino')">Sin Inquilino</button>
+            <button onclick="actualizarEstado('departamento25', 'no-pagado')">No Pagado</button>
+            <button onclick="actualizarEstado('departamento25', 'pagado')">Pagado</button>
+        </div>
+    </div>
+    <div class="departamento pagado" id="departamento26">
+        <h2>602 - GRANDE SIN BALCÓN</h2>
+        <p>Area: 55.04 (M²)</p>
+        <p>Fecha de cobro mensual: Dia 11 De Cada Mes</p>
+        <p>Eric Francisco Gonzales Martinez</p>
+        <p>Vencimiento de Contrato: 01 Junio 2024 al 31 Mayo 2025</p>
+        <div class="botones-group">
+            <button onclick="actualizarEstado('departamento26', 'sin-inquilino')">Sin Inquilino</button>
+            <button onclick="actualizarEstado('departamento26', 'no-pagado')">No Pagado</button>
+            <button onclick="actualizarEstado('departamento26', 'pagado')">Pagado</button>
+        </div>
+    </div>
+    <div class="departamento pagado" id="departamento27">
+        <h2>603 - MEDIANO SIN BALCÓN</h2>
+        <p>Area: 40.51 (M²)</p>
+        <p>Pago Mensual: $20,600.00</p>
+        <p>Fecha de cobro mensual: Dia 12 De Cada Mes</p>
+        <p>Mariluz Jimenez González</p>
+        <p>Vencimiento de Contrato: 01 Septiembre 2023 al 31 Agosto 2024</p>
+        <div class="botones-group">
+            <button onclick="actualizarEstado('departamento27', 'sin-inquilino')">Sin Inquilino</button>
+            <button onclick="actualizarEstado('departamento27', 'no-pagado')">No Pagado</button>
+            <button onclick="actualizarEstado('departamento27', 'pagado')">Pagado</button>
+        </div>
+    </div>
+    <div class="departamento pagado" id="departamento28">
+        <h2>604 - MEDIANO SIN BALCÓN</h2>
+        <p>Area: 40.51 (M²)</p>
+        <p>Pago Mensual: $19,600.00</p>
+        <p>Fecha de cobro mensual: Dia 8 De Cada Mes</p>
+        <p>Melissa Rodriguez</p>
+        <p>Vencimiento de Contrato: 01 Agosto 2023 al 31 Julio 2024</p>
+        <div class="botones-group">
+            <button onclick="actualizarEstado('departamento28', 'sin-inquilino')">Sin Inquilino</button>
+            <button onclick="actualizarEstado('departamento28', 'no-pagado')">No Pagado</button>
+            <button onclick="actualizarEstado('departamento28', 'pagado')">Pagado</button>
+        </div>
+    </div>
+    <div class="departamento pagado" id="departamento29">
+        <h2>605 - GRANDE SIN BALCÓN</h2>
+        <p>Area: 55.04 (M²)</p>
+        <p>Pago Mensual: $21,900.00</p>
+        <p>Fecha de cobro mensual: Dia 12 De Cada Mes</p>
+        <p>Elva Yadira Ornelas Sánchez</p>
+        <p>Vencimiento de Contrato: 01 Octubre 2023 al 30 Septiembre 2024</p>
+        <div class="botones-group">
+            <button onclick="actualizarEstado('departamento29', 'sin-inquilino')">Sin Inquilino</button>
+            <button onclick="actualizarEstado('departamento29', 'no-pagado')">No Pagado</button>
+            <button onclick="actualizarEstado('departamento29', 'pagado')">Pagado</button>
+        </div>
+    </div>
+    <div class="departamento pagado" id="departamento30">
+        <h2>606 - GRANDE SIN BALCÓN</h2>
+        <p>Area: 49.12 (M²)</p>
+        <p>Pago Mensual: $22,000.00</p>
+        <p>Fecha de cobro mensual: Dia --- De Cada Mes</p>
+        <p>Rogelio Prieto Tijerina</p>
+        <p>Vencimiento de Contrato: 01 Noviembre 2023 al 31 Octubre 2024</p>
+        <div class="botones-group">
+            <button onclick="actualizarEstado('departamento30', 'sin-inquilino')">Sin Inquilino</button>
+            <button onclick="actualizarEstado('departamento30', 'no-pagado')">No Pagado</button>
+            <button onclick="actualizarEstado('departamento30', 'pagado')">Pagado</button>
+        </div>
+    </div>
+    <div class="departamento pagado" id="departamento31">
+        <h2>607 - GRANDE CON BALCÓN</h2>
+        <p>Area: 59.93 (M²)</p>
+        <p>Pago Mensual: $22,100.00</p>
+        <p>Fecha de cobro mensual: Dia 3 De Cada Mes</p>
+        <p>Andrés Goya Jiménez</p>
+        <p>Vencimiento de Contrato: 01 Diciembre 2022 al 30 Noviembre 2023</p>
+        <div class="botones-group">
+            <button onclick="actualizarEstado('departamento31', 'sin-inquilino')">Sin Inquilino</button>
+            <button onclick="actualizarEstado('departamento31', 'no-pagado')">No Pagado</button>
+            <button onclick="actualizarEstado('departamento31', 'pagado')">Pagado</button>
+        </div>
+    </div>
+    <div class="departamento pagado" id="departamento32">
+        <h2>608 - GRANDE CON BALCÓN</h2>
+        <p>Area: 67.07 (M²)</p>
+        <p>Pago Mensual: $23,100.00</p>
+        <p>Fecha de cobro mensual: Dia --- De Cada Mes</p>
+        <p>Fernando Marcelo Díaz Castillo</p>
+        <p>Vencimiento de Contrato: 01 Octubre 2023 al 30 Septiembre 2024</p>
+        <div class="botones-group">
+            <button onclick="actualizarEstado('departamento32', 'sin-inquilino')">Sin Inquilino</button>
+            <button onclick="actualizarEstado('departamento32', 'no-pagado')">No Pagado</button>
+            <button onclick="actualizarEstado('departamento32', 'pagado')">Pagado</button>
+        </div>
+    </div>
+    <div class="departamento pagado" id="departamento33">
+        <h2>609 - GRANDE CON BALCÓN</h2>
+        <p>Area: 66.65 (M²)</p>
+        <p>Pago Mensual: $23,100.00</p>
+        <p>Fecha de cobro mensual: Dia --- De Cada Mes</p>
+        <p>Oscar Espino Zorrilla</p>
+        <p>Vencimiento de Contrato: 01 Noviembre 2022 al 31 Octubre 2023</p>
+        <div class="botones-group">
+            <button onclick="actualizarEstado('departamento33', 'sin-inquilino')">Sin Inquilino</button>
+            <button onclick="actualizarEstado('departamento33', 'no-pagado')">No Pagado</button>
+            <button onclick="actualizarEstado('departamento33', 'pagado')">Pagado</button>
+        </div>
+    </div>
+    <div class="departamento pagado" id="departamento34">
+        <h2>610 - GRANDE CON BALCÓN</h2>
+        <p>Area: 67.08 (M²)</p>
+        <p>Pago Mensual: $22,900.00</p>
+        <p>Fecha de cobro mensual: Dia --- De Cada Mes</p>
+        <p>Francisco Medina</p>
+        <p>01 Octubre 2023 al 30 Septiembre 2024</p>
+        <div class="botones-group">
+            <button onclick="actualizarEstado('departamento34', 'sin-inquilino')">Sin Inquilino</button>
+            <button onclick="actualizarEstado('departamento34', 'no-pagado')">No Pagado</button>
+            <button onclick="actualizarEstado('departamento34', 'pagado')">Pagado</button>
+        </div>
+    </div>
+    <div class="departamento pagado" id="departamento35">
+        <h2>611 - GRANDE CON BALCÓN</h2>
+        <p>Area: 66.56 (M²)</p>
+        <p>Pago Mensual: $22,100.00</p>
+        <p>Fecha de cobro mensual: Dia --- De Cada Mes</p>
+        <p>Humberto Manuel González Muñoz</p>
+        <p>Vencimiento de Contrato: 01 Mayo 2023 al 30 Abril 2024</p>
+        <div class="botones-group">
+            <button onclick="actualizarEstado('departamento35', 'sin-inquilino')">Sin Inquilino</button>
+            <button onclick="actualizarEstado('departamento35', 'no-pagado')">No Pagado</button>
+            <button onclick="actualizarEstado('departamento35', 'pagado')">Pagado</button>
+        </div>
+    </div>
+    <div class="departamento pagado" id="departamento36">
+        <h2>612 - GRANDE CON BALCÓN</h2>
+        <p>Area: 59.87 (M²)</p>
+        <p>Pago Mensual: $22,100.00</p>
+        <p>Fecha de cobro mensual: Dia --- De Cada Mes</p>
+        <p>Daniela Sharpe Mrtinez</p>
+        <p>Vencimiento de Contrato: 01 Agosto 2023 al 31 Julio 2024</p>
+        <div class="botones-group">
+            <button onclick="actualizarEstado('departamento36', 'sin-inquilino')">Sin Inquilino</button>
+            <button onclick="actualizarEstado('departamento36', 'no-pagado')">No Pagado</button>
+            <button onclick="actualizarEstado('departamento36', 'pagado')">Pagado</button>
+        </div>
+    </div>
+    
+    </div>
+</div>
+<div class="navigation">
+    <a href="index.html">Regresar a Inicio</a>
+    <a href="piso5.html">Piso 5</a>
+    <a href="piso7.html">Piso 7</a>
+</div>
+</body>
+</html>
+    
+<script>
+        
+    function actualizarEstado(idDepartamento, estado) {
+        var departamento = document.getElementById(idDepartamento);
+        departamento.classList.remove('sin-inquilino', 'no-pagado', 'pagado');
+        departamento.classList.add(estado);
+
+        localStorage.setItem(idDepartamento, estado);
+    }
+
+    window.onload = function() {
+        var departamentos = document.querySelectorAll('.departamento');
+        departamentos.forEach(function(departamento) {
+            var idDepartamento = departamento.id;
+            var estadoGuardado = localStorage.getItem(idDepartamento);
+            if (estadoGuardado) {
+                departamento.classList.add(estadoGuardado);
+            }
+        });
+    }
+</script>
+</body>
+</html>
+
